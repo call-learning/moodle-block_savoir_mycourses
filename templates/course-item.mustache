@@ -27,18 +27,24 @@
     }
 }}
 <li class="list-group-item m-y-1">
-<div data-region="course-events-container" id="course-events-container-{{id}}" data-course-id="{{id}}">
-    <div class="row">
-        <div class="col-lg-3">
-            {{> block_myoverview/course-summary }}
-        </div>
-        <div class="col-lg-9">
-            {{< block_myoverview/course-event-list }}
-                {{$limit}}10{{/limit}}
-                {{$offset}}0{{/offset}}
-                {{$courseid}}{{id}}{{/courseid}}
-            {{/ block_myoverview/course-event-list }}
+    <div data-region="course-events-container" id="course-events-container-{{id}}" data-course-id="{{id}}">
+        <div class="row align-items-center">
+            <div class="col-lg-3">
+                {{> block_savoir_mycourses/course-summary }}
+            </div>
+            <div class="col-lg-8">
+                {{< block_savoir_mycourses/course-event-list }}
+                    {{$limit}}10{{/limit}}
+                    {{$offset}}0{{/offset}}
+                    {{$courseid}}{{id}}{{/courseid}}
+                {{/ block_savoir_mycourses/course-event-list }}
+            </div>
+            <div class="col-lg-1">
+                <a href="{{viewurl}}" class="text-xs-center text-center  p-1 pl-2 btn btn-outline-primary {{#visible}}text-primary{{/visible}}"
+                   aria-label="{{#str}} viewcoursename, block_myoverview, {{{fullnamedisplay}}} {{/str}}">
+                    {{# pix }} t/right, core, {{#str}} viewcourse, block_myoverview {{/str}} {{/ pix }}
+                </a>
+            </div>
         </div>
     </div>
-</div>
 </li>

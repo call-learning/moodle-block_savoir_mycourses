@@ -22,13 +22,13 @@
     Example context (json):
     {}
 }}
-<div id="sort-by-courses-view-{{uniqid}}">
+<div id="sort-by-courses-view-{{uniqid}}" class="my-course-list">
     {{#coursesview}}
         {{#inprogress}}
             {{#haspages}}
                 {{#pages}}
                     <ul class="list-group unstyled" data-region="course-block">
-                        {{#courses}} {{> block_myoverview/course-item }} {{/courses}}
+                        {{#courses}} {{> block_savoir_mycourses/course-item }} {{/courses}}
                     </ul>
                 {{/pages}}
             {{/haspages}}
