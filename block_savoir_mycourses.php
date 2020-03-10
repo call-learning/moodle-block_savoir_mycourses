@@ -25,10 +25,8 @@
 defined('MOODLE_INTERNAL') || die();
 
 global $CFG;
-include_once($CFG->dirroot . '/blocks/myoverview/block_myoverview.php');
-include_once($CFG->dirroot . '/blocks/myoverview/lib.php');
 
-class block_savoir_mycourses extends block_myoverview {
+class block_savoir_mycourses extends block_base {
 
     function init() {
         $this->title = get_string('plugin:title', 'block_savoir_mycourses');
@@ -42,8 +40,7 @@ class block_savoir_mycourses extends block_myoverview {
         if (isset($this->content)) {
             return $this->content;
         }
-
-        $renderable = new \block_myoverview\output\main(BLOCK_MYOVERVIEW_TIMELINE_VIEW);
+        $renderable = new \block_savoir_mycourses\output\main();
         $renderer = $this->page->get_renderer('block_savoir_mycourses');
 
         $this->content = new stdClass();

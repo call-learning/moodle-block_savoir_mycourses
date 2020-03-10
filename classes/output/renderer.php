@@ -44,7 +44,7 @@ class renderer extends plugin_renderer_base {
      * @param main $main The main renderable
      * @return string HTML string
      */
-    public function render_main(\block_myoverview\output\main $main) {
+    public function render_main(\block_savoir_mycourses\output\main $main) {
         return $this->render_from_template('block_savoir_mycourses/timeline-view-courses', $main->export_for_template($this));
     }
 }
