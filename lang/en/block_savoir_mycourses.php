@@ -28,3 +28,5 @@ $string['plugin:title'] = 'My Courses';
 $string['savoir_mycourses:addinstance'] = 'Add a new My Courses Block';
 $string['savoir_mycourses:myaddinstance'] = 'Add a new My Courses Block to Dashboard';
 $string['privacy:metadata'] = 'The My Courses Block displays existing courses.';
+$string['morecourses'] = 'You cannot find your course. It is maybe because it is finished. 
+Go to &nbsp;<a href="{$a}">My Courses</a>&nbsp; page to find it.';

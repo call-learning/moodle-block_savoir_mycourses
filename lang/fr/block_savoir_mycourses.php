@@ -28,3 +28,5 @@ $string['plugin:title'] = 'Mes Cours';
 $string['savoir_mycourses:addinstance'] = 'Ajouter un nouveau bloc "Mes Cours"';
 $string['savoir_mycourses:myaddinstance'] = 'Ajouter un nouveau bloc "Mes Cours" au tableau de bord';
 $string['privacy:metadata'] = 'Le bloc Mes cours affiche les cours auxquels vous êtes inscrits.';
+$string['morecourses'] = 'Vous ne trouvez pas votre cours ? Il est peut-être terminé. Rendez vous 
+sur la page &nbsp;<a href="{$a}">Mes cours</a>&nbsp; pour le retrouver.';

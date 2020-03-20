@@ -52,4 +52,9 @@
             </div>
         {{/inprogress}}
     {{/coursesview}}
+    {{#hasmorecoursesurl}}
+        <div class="d-flex justify-content-center">
+            {{#str}}morecourses, block_savoir_mycourses, {{hasmorecoursesurl}} {{/str}}
+        </div>
+    {{/hasmorecoursesurl}}
 </div>

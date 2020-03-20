@@ -43,7 +43,7 @@ class block_savoir_mycourses extends block_myoverview {
             return $this->content;
         }
 
-        $renderable = new \block_myoverview\output\main(BLOCK_MYOVERVIEW_TIMELINE_VIEW);
+        $renderable = new \block_savoir_mycourses\output\main(BLOCK_MYOVERVIEW_TIMELINE_VIEW);
         $renderer = $this->page->get_renderer('block_savoir_mycourses');
 
         $this->content = new stdClass();

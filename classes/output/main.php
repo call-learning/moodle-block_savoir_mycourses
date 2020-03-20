@@ -15,36 +15,43 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Savoir : Calendar Upcoming modified version
+ * Class containing data for my overview block.
  *
  * @package    block_savoir_mycourses
  * @copyright  Laurent David <laurent@call-learning.fr>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-
 namespace block_savoir_mycourses\output;
-defined('MOODLE_INTERNAL') || die;
+defined('MOODLE_INTERNAL') || die();
 
-use plugin_renderer_base;
 use renderable;
+use renderer_base;
+use templatable;
+use core_completion\progress;
+global $CFG;
+require_once($CFG->dirroot . '/blocks/myoverview/lib.php');
+require_once($CFG->libdir . '/completionlib.php');
 
 /**
- * Savoir : Calendar Upcoming modified version
+ * Class containing data for my overview block.
  *
  * @package    block_savoir_mycourses
  * @copyright  Laurent David <laurent@call-learning.fr>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-
-class renderer extends plugin_renderer_base {
+class main extends \block_myoverview\output\main {
 
     /**
-     * Return the main content for the block overview.
+     * Export this data so it can be used as the context for a mustache template.
      *
-     * @param main $main The main renderable
-     * @return string HTML string
+     * @param \renderer_base $output
+     * @return array
      */
-    public function render_main(\block_savoir_mycourses\output\main $main) {
-        return $this->render_from_template('block_savoir_mycourses/timeline-view-courses', $main->export_for_template($this));
+    public function export_for_template(renderer_base $output) {
+        $export = parent::export_for_template($output);
+        if (!empty($export['coursesview']['past']['haspages'])) {
+            $export['hasmorecoursesurl']  = new \moodle_url('/theme/savoir/pages/mycourses.php');
+        }
+        return $export;
     }
 }
