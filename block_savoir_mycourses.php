@@ -13,7 +13,6 @@
 //
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
-
 /**
  * Savoir : Calendar Upcoming modified version
  *
@@ -25,25 +24,35 @@
 defined('MOODLE_INTERNAL') || die();
 
 global $CFG;
-include_once($CFG->dirroot . '/blocks/myoverview/block_myoverview.php');
-include_once($CFG->dirroot . '/blocks/myoverview/lib.php');
 
-class block_savoir_mycourses extends block_myoverview {
+/**
+ * Class block_savoir_mycourses
+ *
+ * @copyright  Laurent David <laurent@call-learning.fr>
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
+class block_savoir_mycourses extends block_base {
 
-    function init() {
+    /**
+     * Init the block
+     *
+     * @throws coding_exception
+     */
+    public function init() {
         $this->title = get_string('plugin:title', 'block_savoir_mycourses');
     }
+
     /**
      * Returns the contents.
      *
      * @return stdClass contents of block
+     * @throws coding_exception
      */
     public function get_content() {
         if (isset($this->content)) {
             return $this->content;
         }
-
-        $renderable = new \block_savoir_mycourses\output\main(BLOCK_MYOVERVIEW_TIMELINE_VIEW);
+        $renderable = new \block_savoir_mycourses\output\main();
         $renderer = $this->page->get_renderer('block_savoir_mycourses');
 
         $this->content = new stdClass();

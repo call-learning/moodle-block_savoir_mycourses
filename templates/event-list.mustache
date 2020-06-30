@@ -15,16 +15,12 @@
     along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 }}
 {{!
-    @template block_savoir_mycourses/course-event-list
+    @template block_savoir_mycourses/event-list
 
-    This template renders a list of events for the myoverview block
-    sort by courses view.
+    This template renders a list of events for the myoverview block.
 
     Example context (json):
     {
-        "urls": {
-            "noevents": "#"
-        }
     }
 }}
 <div data-region="event-list-container"
@@ -40,55 +36,43 @@
             {{$extratitleclasses}}text-danger{{/extratitleclasses}}
             {{$startday}}-14{{/startday}}
             {{$endday}}0{{/endday}}
-            {{$eventlistitems}}
-                {{> block_savoir_mycourses/course-event-list-items }}
-            {{/eventlistitems}}
         {{/ block_savoir_mycourses/event-list-group }}
         {{< block_savoir_mycourses/event-list-group }}
             {{$title}}{{#str}} today {{/str}}{{/title}}
             {{$extratitleclasses}}{{/extratitleclasses}}
             {{$startday}}0{{/startday}}
             {{$endday}}1{{/endday}}
-            {{$eventlistitems}}
-                {{> block_savoir_mycourses/course-event-list-items }}
-            {{/eventlistitems}}
         {{/ block_savoir_mycourses/event-list-group }}
         {{< block_savoir_mycourses/event-list-group }}
             {{$title}}{{#str}} next7days, block_savoir_mycourses {{/str}}{{/title}}
             {{$extratitleclasses}}{{/extratitleclasses}}
             {{$startday}}1{{/startday}}
             {{$endday}}7{{/endday}}
-            {{$eventlistitems}}
-                {{> block_savoir_mycourses/course-event-list-items }}
-            {{/eventlistitems}}
         {{/ block_savoir_mycourses/event-list-group }}
         {{< block_savoir_mycourses/event-list-group }}
             {{$title}}{{#str}} next30days, block_savoir_mycourses {{/str}}{{/title}}
             {{$extratitleclasses}}{{/extratitleclasses}}
             {{$startday}}7{{/startday}}
             {{$endday}}30{{/endday}}
-            {{$eventlistitems}}
-                {{> block_savoir_mycourses/course-event-list-items }}
-            {{/eventlistitems}}
         {{/ block_savoir_mycourses/event-list-group }}
         {{< block_savoir_mycourses/event-list-group }}
             {{$title}}{{#str}} future, block_savoir_mycourses {{/str}}{{/title}}
             {{$extratitleclasses}}{{/extratitleclasses}}
             {{$startday}}30{{/startday}}
             {{$endday}}{{/endday}}
-            {{$eventlistitems}}
-                {{> block_savoir_mycourses/course-event-list-items }}
-            {{/eventlistitems}}
         {{/ block_savoir_mycourses/event-list-group }}
 
-        <div class="text-xs-center text-center">
-            <span data-region="loading-icon-container">
+        <div class="text-xs-center text-center m-y-2">
+            <button type="button" class="btn btn-secondary" data-action="view-more">
+                {{#str}} viewmore {{/str}}
+                <span class="hidden" data-region="loading-icon-container">
                     {{> core/loading }}
-            </span>
+                </span>
+            </button>
         </div>
     </div>
-    <div class="hidden text-xs-center text-center" data-region="empty-message">
-        <img class="empty-placeholder-image-sm"
+    <div class="hidden text-xs-center text-center m-t-3" data-region="empty-message">
+        <img class="empty-placeholder-image-lg"
              src="{{urls.noevents}}"
              alt="{{#str}} noevents, block_savoir_mycourses {{/str}}"
              role="presentation">
@@ -96,8 +80,8 @@
     </div>
 </div>
 {{#js}}
-require(['jquery', 'block_savoir_mycourses/event_list'], function($, EventList) {
+    require(['jquery', 'block_savoir_mycourses/event_list'], function($, EventList) {
     var root = $("#event-list-container-{{$courseid}}{{/courseid}}");
-    EventList.load(root);
-});
+    EventList.registerEventListeners(root);
+    });
 {{/js}}
